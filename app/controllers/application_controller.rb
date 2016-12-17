@@ -13,6 +13,27 @@ class ApplicationController < Sinatra::Base
 	  "<h3>Hello, traveler. Welcome to Wheels Within Wheels.</h3>"
 	end
 
+	get '/login' do
+		erb :'users/login'
+	end
+
+	post '/login' do
+		user = User.find_by(username: params[:username])
+	end
+
+	get '/signup' do
+		erb :'users/signup'
+	end
+
+	post '/signup' do
+		User.create(params)
+		redirect '/crudapps'
+	end
+
+	get '/crudapps' do
+		erb :'crudapps/index'
+	end
+
   ##############################################
   #
   # These test routes work. They create the file 
