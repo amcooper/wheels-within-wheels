@@ -10,8 +10,35 @@ class ApplicationController < Sinatra::Base
   end
 
 	get '/' do
-	  "<h3>Hello, traveler. Head to <a href='/attachment'>'/attachment'</a> or <a href='/thebigfile'>'/thebigfile'</a>.</h3>"
+	  "<h3>Hello, traveler. Welcome to Wheels Within Wheels.</h3>"
 	end
+
+  ##############################################
+  #
+  # These test routes work. They create the file 
+  # in the application root directory.
+  #
+	get '/testing' do
+		erb :test
+	end
+
+	post '/testing' do
+		open('testing.txt', 'w') {|f|
+		  f.puts "We are testing the greatest app."
+		}
+		redirect '/testshow'
+	end
+
+	get '/testshow' do
+		@filename = 'testingfile'
+		erb :show
+	end
+
+	get '/testdl' do
+		send_file 'testing.txt'
+	end
+	#
+	#################################################
 
 	# get '/thefile' do
 	#   send_file 'thefile.txt'
