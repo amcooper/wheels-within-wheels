@@ -8,6 +8,7 @@ gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
 gem 'bcrypt'
+gem 'zipruby'
 
 group :development do
 	gem 'thin'
