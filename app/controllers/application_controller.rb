@@ -94,12 +94,13 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post '/ziptest' do
+		session[:app] = params[:subtest]
 		FileUtils.cd('assets/creations') do 
-			FileUtils.mkdir 'ziptest'
-			FileUtils.cp_r '../raw_material/.', 'ziptest'
-			Zip::Archive.open('ziptest.zip', Zip::CREATE) do |archive|
-				archive.add_dir('ziptest')
-				Dir.glob('ziptest/**/*').each do |path|
+			FileUtils.mkdir "#{session[:app]}"
+			FileUtils.cp_r '../raw_material/.', "#{session[:app]}"
+			Zip::Archive.open("#{session[:app]}.zip", Zip::CREATE) do |archive|
+				archive.add_dir("#{session[:app]}")
+				Dir.glob("#{session[:app]}/**/*").each do |path|
 					if File.directory?(path)
 						archive.add_dir(path)
 					else
@@ -112,7 +113,9 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get '/dlziptest' do
-		send_file 'assets/creations/ziptest.zip'
+		puts "session[:app]: #{session[:app]}"
+		send_file "assets/creations/#{session[:app]}.zip"
+		redirect '/'
 	end
 	#
 	#################################################
@@ -130,61 +133,3 @@ class ApplicationController < Sinatra::Base
 	# end
 
 end
-
-# Zip::Archive.open('filename.zip', Zip::CREATE) do |ar|
-#   ar.add_dir('dir')
-
-#   Dir.glob('dir/**/*').each do |path|
-#     if File.directory?(path)
-#       ar.add_dir(path)
-#     else
-#       ar.add_file(path, path) # add_file(<entry name>, <source path>)
-#     end
-#   end
-# end
-
-
-# creating zip archive
-# require 'zipruby'
-
-# bar_txt =  open('bar.txt')
-
-# Zip::Archive.open('filename.zip', Zip::CREATE) do |ar|
-#   # if overwrite: ..., Zip::CREATE | Zip::TRUNC) do |ar|
-#   # specifies compression level: ..., Zip::CREATE, Zip::BEST_SPEED) do |ar|
-
-#     ar.add_file('foo.txt') # add file to zip archive
-
-#   # add file to zip archive from File object
-#   ar << bar_txt # or ar.add_io(bar_txt)
-
-#   # add file to zip archive from buffer
-#   ar.add_buffer('zoo.txt', 'Hello, world!')
-# end
-
-# bar_txt.rewind
-
-# # include directory in zip archive
-# Zip::Archive.open('filename.zip') do |ar|
-#   ar.add_dir('dirname')
-#   ar.add_file('dirname/foo.txt', 'foo.txt')
-#       # args: <entry name>     ,  <source>
-
-#   ar.add_io('dirname/bar.txt', bar_txt)
-#     # args: <entry name>     , <source>
-
-#   ar.add_buffer('dirname/zoo.txt', 'Hello, world!')
-#         # args: <entry name>     , <source>
-# end
-
-# bar_txt.close # close file after archive closed
-
-# # add huge file
-# source = %w(London Bridge is falling down)
-
-# Zip::Archive.open('filename.zip') do |ar|
-#   # lb.txt => 'LondonBridgeisfallingdown'
-#   ar.add('lb.txt') do # add(<filename>, <mtime>)
-#     source.shift # end of stream is nil
-#   end
-# end
