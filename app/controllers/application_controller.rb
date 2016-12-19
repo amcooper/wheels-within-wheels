@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
   	set :session_secret, 'riserobotsrise'
   end
 
-  helpers Helpers
+  helpers Helpers, FindAndReplace
 
 	get '/' do
 	  "<h3>Hello, traveler. Welcome to Wheels Within Wheels.</h3>"
@@ -98,6 +98,17 @@ class ApplicationController < Sinatra::Base
 		FileUtils.cd('assets/creations') do 
 			FileUtils.mkdir "#{session[:app]}"
 			FileUtils.cp_r '../raw_material/.', "#{session[:app]}"
+
+#######################
+#
+# This method, culled from Stack Overflow,
+# works. To expand, maybe I put all the 
+# substitution targets and replacements into 
+# session[:app] and iterate over them and run
+# #file_edit on them.
+#
+			file_edit(File.join(session[:app],"public","index.html"), /xTITLEx/, session[:app])
+
 			Zip::Archive.open("#{session[:app]}.zip", Zip::CREATE) do |archive|
 				archive.add_dir("#{session[:app]}")
 				Dir.glob("#{session[:app]}/**/*").each do |path|
