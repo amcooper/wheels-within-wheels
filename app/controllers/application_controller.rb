@@ -94,15 +94,17 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post '/ziptest' do
-		FileUtils.mkdir 'assets/creations/ziptest'
-		FileUtils.cp_r 'assets/raw_material/.', 'assets/creations/ziptest'
-		Zip::Archive.open('assets/creations/ziptest.zip', Zip::CREATE) do |archive|
-			archive.add_dir('ziptest')
-			Dir.glob('assets/creations/ziptest/**/*').each do |path|
-				if File.directory?(path)
-					archive.add_dir(path)
-				else
-					archive.add_file(path, path)
+		FileUtils.cd('assets/creations') do 
+			FileUtils.mkdir 'ziptest'
+			FileUtils.cp_r '../raw_material/.', 'ziptest'
+			Zip::Archive.open('ziptest.zip', Zip::CREATE) do |archive|
+				archive.add_dir('ziptest')
+				Dir.glob('ziptest/**/*').each do |path|
+					if File.directory?(path)
+						archive.add_dir(path)
+					else
+						archive.add_file(path, path)
+					end
 				end
 			end
 		end
