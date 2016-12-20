@@ -124,9 +124,11 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get '/dlziptest' do
-		puts "session[:app]: #{session[:app]}"
 		send_file "assets/creations/#{session[:app]}.zip"
-		redirect '/'
+
+		# This redirect isn't working. How do I 
+		# redirect after the download?
+		redirect '/' 
 	end
 	#
 	#################################################
