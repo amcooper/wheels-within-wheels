@@ -12,24 +12,15 @@ class ApplicationController < Sinatra::Base
   helpers Helpers, FindAndReplace
 
 	get '/' do
-	  "<h3>Hello, traveler. Welcome to Wheels Within Wheels.</h3>"
+		redirect '/login'
 	end
 
   get '/login' do
   	if logged_in?
-  		redirect '/tweets'
+  		redirect '/crudapps'
   	else
   	  erb :'users/login'
   	end
-  end
-
-  get '/logout' do
-  	if logged_in?
-  		session.clear
-  		redirect '/login'
-  	else
-	  	redirect '/'
-	  end
   end
 
   post '/login' do
@@ -42,9 +33,16 @@ class ApplicationController < Sinatra::Base
   	end
   end
 
+  get '/logout' do
+  	if logged_in?
+  		session.clear
+  	end
+		redirect '/login'
+  end
+
   get '/signup' do
   	if logged_in?
-  		redirect '/tweets'
+  		redirect '/crudapps'
   	else
 	  	erb :'users/signup'
 	  end
@@ -61,7 +59,19 @@ class ApplicationController < Sinatra::Base
   end
 
 	get '/crudapps' do
+		@crudapps = Crudapp.all
 		erb :'crudapps/index'
+	end
+
+	get '/crudapps/new' do
+		if logged_in?
+			erb :'crudapps/new'
+		else
+			redirect '/login'
+		end
+	end
+
+	post '/crudapps' do
 	end
 
   ##############################################

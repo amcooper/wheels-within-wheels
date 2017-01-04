@@ -1,0 +1,11 @@
+<h3>Here are the apps</h3>
+<div>
+	<a href="/crudapps/new">Create a new app</a>
+</div>
+<% @crudapps.each do |crudapp| %>
+	<div><a href="/crudapps/<%= crudapp.id %>"><%= crudapp.title %></div>
+	<div>
+		<a href="/crudapps/<%= crudapp.id %>/zipdl">download</a>
+	</div>
+	<div><%= crudapp.description %></div>
+<% end %>
