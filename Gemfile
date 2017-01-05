@@ -16,6 +16,7 @@ group :development do
 	gem 'sqlite3'
 	gem 'tux'
 	gem 'pry'
+	gem 'rb-readline'
 end
 
 group :test do

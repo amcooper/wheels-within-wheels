@@ -72,7 +72,25 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post '/crudapps' do
+		# if logged_in
+		# also get the user_id in here
+		@crudapp = Crudapp.create(params[:crudapp])
+		params[:columns].each do |column|
+			@crudapp.columns << Column.create(column)
+		end
+		# binding.pry
+		redirect "/crudapps/#{@crudapp.id}"
 	end
+
+	get 'crudapps/:id' do
+	end
+
+	get 'crudapps/:id/edit' do
+	end
+
+	get 'crudapps/:id/zipdl' do
+	end
+
 
   ##############################################
   #

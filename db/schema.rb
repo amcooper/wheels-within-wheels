@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217202448) do
+ActiveRecord::Schema.define(version: 20170104193638) do
 
   create_table "columns", force: :cascade do |t|
     t.string  "key_name"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20161217202448) do
   create_table "crudapps", force: :cascade do |t|
     t.string  "title"
     t.integer "user_id"
+    t.string  "description"
+    t.string  "model"
   end
 
   create_table "users", force: :cascade do |t|

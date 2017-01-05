@@ -1,3 +1,0 @@
-[submodule "assets/node-wheels"]
-	path = assets/node-wheels
-	url = https://github.com/amcooper/node-wheels.git
