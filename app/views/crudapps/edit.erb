@@ -1,0 +1,46 @@
+<h3>Edit.</h3>
+<form method="post" action="/crudapps">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" value="@crudapp.user_id">
+  
+  <label for="crudapp[title]">Application title</label>
+  <input type="text" name="crudapp[title]" value="@crudapp.title">
+  
+  <label for="crudapp[description]">Description</label>
+  <textarea name="crudapp[description]" value="@crudapp.description"></textarea>
+  
+  <label for="crudapp[model]">Item name</label>
+  <input type="text" name="crudapp[model]" value="@crudapp.model">
+  
+  <input type="hidden" name="columns[0][id]" value="@crudapp.columns[0].id">
+
+  <label for="columns[][key_name]">First attribute name</label>
+  <input type="text" name="columns[0][key_name]" value="@crudapp.columns[0].key_name">
+  
+  <label for="columns[][data_type]">First attribute data type</label>
+  <input type="text" name="columns[0][data_type]" value="@crudapp.columns[0].data_type">
+  
+  <input type="hidden" name="columns[1][id]" value="@crudapp.columns[1].id">
+  
+  <label for="columns[][key_name]">Second attribute name</label>
+  <input type="text" name="columns[1][key_name]" value="@crudapp.columns[1].key_name">
+  
+  <label for="columns[][data_type]">Second attribute data type</label>
+  <input type="text" name="columns[1][data_type]" value="@crudapp.columns[1].data_type">
+  
+  <input type="hidden" name="columns[2][id]" value="@crudapp.columns[2].id">
+  
+  <label for="columns[][key_name]">Third attribute name</label>
+  <input type="text" name="columns[][key_name]" value="@crudapp.columns[2].key_name">
+  
+  <label for="columns[][data_type]">Third attribute data type</label>
+  <input type="text" name="columns[][data_type]" value="@crudapp.columns[2].data_type">
+  
+  <label for="crudapp[github]">GitHub link</label>
+  <input type="text" name="crudapp[github]" value="@crudapp.github">
+  
+  <label for="crudapp[web]">Web link</label>
+  <input type="text" name="crudapp[web]" value="@crudapp.web">
+  
+  <input type="submit" value="Submit">
+</form>

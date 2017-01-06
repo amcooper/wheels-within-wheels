@@ -72,23 +72,51 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post '/crudapps' do
-		# if logged_in
-		# also get the user_id in here
-		@crudapp = Crudapp.create(params[:crudapp])
-		params[:columns].each do |column|
-			@crudapp.columns << Column.create(column)
+		if logged_in?
+			@crudapp = Crudapp.new(params[:crudapp])
+			@crudapp.user_id = current_user.id
+			@crudapp.save
+			params[:columns].each do |column|
+				@crudapp.columns << Column.create(column)
+			end
+			@crudapp.zipper
+			redirect "/crudapps/#{@crudapp.id}"
+		else
+			redirect "/login"
 		end
-		# binding.pry
-		redirect "/crudapps/#{@crudapp.id}"
 	end
 
-	get 'crudapps/:id' do
+	get '/crudapps/:id' do
+		@crudapp = Crudapp.find(params[:id])
+		erb :'crudapps/show'
 	end
 
-	get 'crudapps/:id/edit' do
+	get '/crudapps/:id/edit' do
+		if logged_in?
+			@crudapp = Crudapp.find(params[:id])
+			erb :'crudapps/edit'
+		else
+			redirect "/login"
+		end
 	end
 
-	get 'crudapps/:id/zipdl' do
+	patch '/crudapps' do
+		if logged_in? && params[:crudapp[:user_id]] == current_user.id
+			@crudapp = Crudapp.find(params[:id])
+			@crudapp.update(params[:crudapp])
+			params[:columns].each do |params_column|
+        column = Column.find(params_column[:id])
+				@crudapp.columns << @column.update(params_column)
+			end
+			redirect "/crudapps/#{@crudapp.id}"
+		else
+			redirect "/login"
+		end
+	end
+
+	get '/crudapps/:id/zipdl' do
+		crudapp = Crudapp.find(params[:id])
+		send_file "assets/creations/#{crudapp.title}.zip"
 	end
 
 
