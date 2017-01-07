@@ -8,6 +8,7 @@ module Helpers
 	end
 end
 
+# This method has been moved to crudapp.rb and can be deleted.
 module FindAndReplace
 
 	require 'tempfile'

@@ -178,20 +178,30 @@ class Crudapp < ActiveRecord::Base
 		  }
 	  },
 	  { file: ["public","partials","items.html"],
-	  	findString: "Item",
+	  	findString: "ItemItem",  
 	  	replacement: { 
 	  		isArray: false, 
-	  		first_attr: "model" } },
-				    { file: ["public","index.html"],
-					    findString: "nodeWheels",
+	  		first_attr: "model" } 
+	  },
+    { file: ["public","index.html"],
+	    findString: "nodeWheels",
 	    replacement: { 
 	    	isArray: false, 
-	    	first_attr: "title" } },
+	    	first_attr: "title" } 
+  	},
     { file: ["package.json"],
 	    findString: "nodeWheels",
 	    replacement: { 
 	    	isArray: false, 
-	    	first_attr: "title" } }
+	    	first_attr: "title" } 
+  	},
+	  { file: ["public", "package.json"],
+	  	findString: "nodeWheels",
+	    replacement: {
+	    	isArray: false,
+	    	first_attr: "title"
+    	}
+    }
   ]
 
 	def file_edit(filename, regexp, replacement)
@@ -233,6 +243,7 @@ class Crudapp < ActiveRecord::Base
 					end
 				end
 			end
+			# After zipping, should it zap the original?
 		end
 
 		"#{self.title}.zip"
