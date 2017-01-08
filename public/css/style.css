@@ -1,3 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Asset|Walter+Turncoat');
+
+/*
+font-family: 'Walter Turncoat', cursive;
+font-family: 'Asset', cursive;
+*/
+
+html {
+	font-size: 62.5%;
+	color: white;
+	background-color: #033076;
+}
+
+#header-text {
+	position: fixed;
+	top: 0;
+	left: 0;
+	font-family: 'Asset', serif;
+}
+
+#wheels {
+  position: absolute;
+  left: -40px;
+  top: -18px;
+  width: 1063px;
+  font-size: 84px;
+  font-size: 8.4rem;
+  letter-spacing: 40px;
+}
+
+#within-wheels {
+	position: absolute;
+  top: -3px;
+  left: 980px;
+  font-size: 26px;
+  font-size: 2.6rem;
+  text-align: center;
+  letter-spacing: 11px;
+  line-height: 40px;
+}
+
+#wheels p, #within-wheels p {
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+}
+
+#main-text {
+	position: static;
+	top: 100px;
+}
+
 #test-box {
 	background-color: beige;
 	border: 1px solid red;
