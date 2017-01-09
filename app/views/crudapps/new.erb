@@ -1,22 +1,42 @@
-<h3>Let's make a CRUD app.</h3>
+<div>Let's make a CRUD app.</div>
 <form method="post" action="/crudapps">
-  <label for="crudapp[title]">Application title</label>
-  <input type="text" name="crudapp[title]">
-  <label for="crudapp[description]">Description</label>
-  <textarea name="crudapp[description]"></textarea>
-  <label for="crudapp[model]">Item name</label>
-  <input type="text" name="crudapp[model]" placeholder="Book? Song? Blog post?">
-  <label for="columns[][key_name]">First attribute name</label>
-  <input type="text" name="columns[][key_name]">
-  <label for="columns[][data_type]">First attribute data type</label>
-  <input type="text" name="columns[][data_type]">
-  <label for="columns[][key_name]">Second attribute name</label>
-  <input type="text" name="columns[][key_name]">
-  <label for="columns[][data_type]">Second attribute data type</label>
-  <input type="text" name="columns[][data_type]">
-  <label for="columns[][key_name]">Third attribute name</label>
-  <input type="text" name="columns[][key_name]">
-  <label for="columns[][data_type]">Third attribute data type</label>
-  <input type="text" name="columns[][data_type]">
+  <ul>
+    <li>
+      <label for="crudapp[title]">Application title</label>
+      <input type="text" name="crudapp[title]">
+    </li>
+    <li>
+      <label for="crudapp[description]">Description</label>
+      <textarea name="crudapp[description]"></textarea>
+    </li>
+    <li>
+      <label for="crudapp[model]">Item name</label>
+      <input type="text" name="crudapp[model]" placeholder="Book? Song? Blog post?">
+    </li>
+    <li>
+      <label for="columns[][key_name]">First attribute name</label>
+      <input type="text" name="columns[][key_name]">
+    </li>
+    <li>
+      <label for="columns[][data_type]">First attribute data type</label>
+      <input type="text" name="columns[][data_type]">
+    </li>
+    <li>
+      <label for="columns[][key_name]">Second attribute name</label>
+      <input type="text" name="columns[][key_name]">
+    </li>
+    <li>
+      <label for="columns[][data_type]">Second attribute data type</label>
+      <input type="text" name="columns[][data_type]">
+    </li>
+    <li>
+      <label for="columns[][key_name]">Third attribute name</label>
+      <input type="text" name="columns[][key_name]">
+    </li>
+    <li>
+      <label for="columns[][data_type]">Third attribute data type</label>
+      <input type="text" name="columns[][data_type]">
+    </li>
+  </ul>
   <input type="submit" value="Submit">
 </form>
