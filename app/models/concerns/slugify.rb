@@ -1,7 +1,7 @@
 module Slugify
 
 	module Slugger
-		def slug(key)
+		def slugmaker(key)
 		  self.send(key).strip.downcase.gsub(/(&|&amp;)/, ' and ').gsub(/[\s\.\/\\]/, '-').gsub(/[^\w-]/, '').gsub(/[-_]{2,}/, '-').gsub(/^[-_]/, '').gsub(/[-_]$/, '')			
 		end
 	end
