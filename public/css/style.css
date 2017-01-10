@@ -136,6 +136,15 @@ label {
 	width: 50%;
 }
 
+textarea {
+	width: 50%;
+	background-color: transparent;
+	font-family: 'Walter Turncoat';
+	color: #eaf3ff;
+	font-size: 12px;
+	font-size: 1.2rem;
+}
+
 .entry-submit-margin {
   margin: 0 auto;
   width: 40%;
@@ -174,6 +183,12 @@ label {
 
 .crudapp-description {
 	margin-bottom: 10px;
+}
+
+select {
+  font-family: 'Walter Turncoat';
+  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 .back-to-index {

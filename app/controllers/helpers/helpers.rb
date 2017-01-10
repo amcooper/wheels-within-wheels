@@ -6,6 +6,10 @@ module Helpers
 	def logged_in?
 		!!session[:user_id]
 	end
+
+	def slug(string)
+	  string.strip.downcase.gsub(/(&|&amp;)/, ' and ').gsub(/[\s\.\/\\]/, '-').gsub(/[^\w-]/, '').gsub(/[-_]{2,}/, '-').gsub(/^[-_]/, '').gsub(/[-_]$/, '')			
+	end
 end
 
 # This method has been moved to crudapp.rb and can be deleted.

@@ -25,7 +25,12 @@
     </li>
     <li>
       <label for="columns[][data_type]">First attribute data type</label>
-      <input class="fieldbox" type="text" name="columns[0][data_type]" value="<%= @crudapp.columns[0].data_type %>">
+      <select name="columns[][data_type]">
+        <option value="String" <%= 'selected' if @crudapp.columns[0].data_type=='String' %>>String</option> 
+        <option value="Number" <%= 'selected' if @crudapp.columns[0].data_type=='Number' %>>Number</option>
+        <option value="Date" <%= 'selected' if @crudapp.columns[0].data_type=='Date' %>>Date</option>
+        <option value="Boolean" <%= 'selected' if @crudapp.columns[0].data_type=='Boolean' %>>Boolean</option>
+      </select>
     </li> 
 
     <input type="hidden" name="columns[1][id]" value="<%= @crudapp.columns[1].id %>">
@@ -36,7 +41,12 @@
     </li>
     <li>
       <label for="columns[][data_type]">Second attribute data type</label>
-      <input class="fieldbox" type="text" name="columns[1][data_type]" value="<%= @crudapp.columns[1].data_type %>">
+      <select name="columns[][data_type]">
+        <option value="String" <%= 'selected' if @crudapp.columns[1].data_type=='String' %>>String</option> 
+        <option value="Number" <%= 'selected' if @crudapp.columns[1].data_type=='Number' %>>Number</option>
+        <option value="Date" <%= 'selected' if @crudapp.columns[1].data_type=='Date' %>>Date</option>
+        <option value="Boolean" <%= 'selected' if @crudapp.columns[1].data_type=='Boolean' %>>Boolean</option>
+      </select>
     </li>
 
     <input type="hidden" name="columns[2][id]" value="<%= @crudapp.columns[2].id %>">
@@ -47,7 +57,12 @@
     </li>
     <li>
       <label for="columns[][data_type]">Third attribute data type</label>
-      <input class="fieldbox" type="text" name="columns[][data_type]" value="<%= @crudapp.columns[2].data_type %>">
+      <select name="columns[][data_type]">
+        <option value="String" <%= 'selected' if @crudapp.columns[2].data_type=='String' %>>String</option> 
+        <option value="Number" <%= 'selected' if @crudapp.columns[2].data_type=='Number' %>>Number</option>
+        <option value="Date" <%= 'selected' if @crudapp.columns[2].data_type=='Date' %>>Date</option>
+        <option value="Boolean" <%= 'selected' if @crudapp.columns[2].data_type=='Boolean' %>>Boolean</option>
+      </select>
     </li>
     <li>
       <label for="crudapp[github]">GitHub link</label>

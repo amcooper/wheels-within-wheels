@@ -49,13 +49,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-  	if params[:username] == "" || params[:email] == "" || params[:password] == ""
-  		redirect '/signup'
-  	else
+  	# if params[:username] == "" || params[:email] == "" || params[:password] == ""
+  	# 	redirect '/signup'
+  	# else
 	  	@user = User.create(params)
 	  	session[:user_id] = @user.id
 	  	redirect '/crudapps'
-	  end
+	  # end
   end
 
 	get '/crudapps' do
@@ -77,6 +77,7 @@ class ApplicationController < Sinatra::Base
 			@crudapp.user_id = current_user.id
 			@crudapp.save
 			params[:columns].each do |column|
+				column[:key_name] = slug(column[:key_name])
 				@crudapp.columns << Column.create(column)
 			end
 			@crudapp.zipper

@@ -5,6 +5,8 @@ class Crudapp < ActiveRecord::Base
   include Slugify::Slugger
   extend Slugify::Slugfinder
 
+  validates :title, presence: true
+
 	require 'tempfile'
 
 	has_many :columns
