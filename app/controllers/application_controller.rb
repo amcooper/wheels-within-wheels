@@ -101,7 +101,9 @@ class ApplicationController < Sinatra::Base
 	end
 
 	#patch - Not working. Hm.
-	post '/crudapps/:id' do
+	post "/crudapps/:id" do
+	# patch "/crudapps/:id" do
+		binding.pry
 		if logged_in?
 			@crudapp = Crudapp.find(params[:id])
 			if current_user.id == @crudapp.user_id

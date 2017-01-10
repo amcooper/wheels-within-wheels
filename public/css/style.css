@@ -148,6 +148,7 @@ label {
   font-size: 36px;
   font-size: 3.6rem;
   font-family: 'Walter Turncoat';
+  cursor: pointer;
 }
 
 .crudapp-header {
