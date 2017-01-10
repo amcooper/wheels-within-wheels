@@ -1,11 +1,9 @@
-<h3>Here are the apps</h3>
-<div>
-	<a href="/crudapps/new">Create a new app</a>
+<div class="crudapp-header">here are the apps</div>
+<div id="create-link">
+	<a href="/crudapps/new">create a new app</a>
 </div>
 <% @crudapps.each do |crudapp| %>
-	<div><a href="/crudapps/<%= crudapp.id %>"><%= crudapp.title %></div>
-	<div>
-		<a href="/crudapps/<%= crudapp.id %>/zipdl">download</a>
+	<div><a href="/crudapps/<%= crudapp.id %>"><%= crudapp.title %></a><span class="creator-index"> by <%= crudapp.user.username %></span>&nbsp;|&nbsp;<a href="/crudapps/<%= crudapp.id %>/zipdl"><span class="download-link">download</span></a>
 	</div>
-	<div><%= crudapp.description %></div>
+	<div class="crudapp-description"><%= crudapp.description %></div>
 <% end %>

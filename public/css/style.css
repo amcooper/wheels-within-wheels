@@ -11,6 +11,18 @@ html {
 	background-color: #033076;
 }
 
+a {
+	color: #eaf3ff;
+}
+
+a:hover {
+	color: #ffffcc;
+}
+
+a:visited {
+	color: #eaf3ff;
+}
+
 #header-text {
 	position: fixed;
 	top: 0;
@@ -42,6 +54,14 @@ html {
 #wheels p, #within-wheels p {
 	-webkit-margin-before: 0;
 	-webkit-margin-after: 0;
+}
+
+#welcome {
+  top: 80px;
+  position: fixed;
+  font-family: 'Walter Turncoat';
+  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 #main-text {
@@ -80,7 +100,7 @@ html {
 .entry-alternative a {
 	text-decoration: none;
 }
-
+/*
 .entry-alternative a:hover {
 	color: #ffffff;
 }
@@ -88,7 +108,7 @@ html {
 .entry-alternative a:visited {
 	color: #eaf3ff;
 }
-
+*/
 .basic-form {
   width: 900px; 
   overflow: hidden;
@@ -128,6 +148,65 @@ label {
   font-size: 36px;
   font-size: 3.6rem;
   font-family: 'Walter Turncoat';
+}
+
+.crudapp-header {
+	font-size: 48px;
+	font-size: 4.8rem;
+  margin: 0 auto;
+/*	width: 40%;*/
+}
+
+#create-link {
+	margin-bottom: 10px;
+}
+
+.creator-index {
+	font-size: 18px;
+	font-size: 1.8rem
+}
+
+.download-link {
+	font-size: 18px;
+	font-size: 1.8rem;
+}
+
+.crudapp-description {
+	margin-bottom: 10px;
+}
+
+.back-to-index {
+	font-size: 24px;
+	font-size: 2.4rem;
+	margin-bottom: 5px;
+}
+
+.back-to-index a {
+	text-decoration: none;
+}
+
+.left-nav {
+	float: left;
+}
+
+.delete-form {
+	font-size: 24px;
+	font-size: 2.4rem;
+}
+
+.delete-form::after {
+	clear: both;
+}
+
+.delete-button {
+  border-width: 0;
+  padding: 0;
+  background-color: transparent;
+  color: #eaf3ff;
+  font-size: 24px;
+  font-size: 2.4rem;
+  font-family: 'Walter Turncoat';	
+  cursor: pointer;
 }
 
 #test-box {

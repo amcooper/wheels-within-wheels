@@ -1,15 +1,31 @@
-<h3><%= @crudapp.title %></h3>
+<div class="back-to-index">
+  <div class="left-nav">
+	<a href="/crudapps">« back to index</a>&nbsp;|&nbsp;<a href="/crudapps/<%= @crudapp.id %>/edit">edit this item</a>&nbsp;|&nbsp;</div>
+	<form class="delete-form" method="post" action="/crudapps/<%= @crudapp.id %>">
+	  <input type="hidden" name="_method" value="delete">
+	  <input class="delete-button" type="submit" value="delete">
+  </form>
+</div>
+
+<div class="crudapp-header"><%= @crudapp.title %>&nbsp;|&nbsp;<a target="_blank" href="/crudapps/<%= @crudapp.id %>/zipdl">download</a></div>
+
+<div class="crudapp-creator">created by <%= @crudapp.user.username %></div>
+<div>
+
+<% if @crudapp.github != "" %>
+	<a href="<%= @crudapp.github %>">GitHub</a>
+<% end %>
+<% if @crudapp.github != "" && @crudapp.web != "" %>
+  <span>&nbsp;|&nbsp;</span>
+<% end %>
+<% if @crudapp.web != "" %>
+	<a href="<%= @crudapp.web %>">web link</a>
+<% end %>
+</div>
 <div><%= @crudapp.description %></div>
 <div><h4>Model: <%= @crudapp.model %></h4></div>
 <% @crudapp.columns.each do |column| %>
   <% if column.key_name != "" %>
 		<div><%= column.key_name %> : <%= column.data_type %></div>
 	<% end %>
-<% end %>
-<div><h4><a target="_blank" href="/crudapps/<%= @crudapp.id %>/zipdl">Download</a></h4></div>
-<% if @crudapp.github != "" %>
-	<div><a href="<%= @crudapp.github %>">GitHub</a></div>
-<% end %>
-<% if @crudapp.web != "" %>
-	<div><a href="<%= @crudapp.web %>">Web link!</a></div>
 <% end %>

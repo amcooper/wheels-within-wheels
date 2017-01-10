@@ -100,15 +100,20 @@ class ApplicationController < Sinatra::Base
 		end
 	end
 
-	patch '/crudapps' do
-		if logged_in? && params[:crudapp[:user_id]] == current_user.id
+	#patch - Not working. Hm.
+	post '/crudapps/:id' do
+		if logged_in?
 			@crudapp = Crudapp.find(params[:id])
-			@crudapp.update(params[:crudapp])
-			params[:columns].each do |params_column|
-        column = Column.find(params_column[:id])
-				@crudapp.columns << @column.update(params_column)
+			if current_user.id == @crudapp.user_id
+				@crudapp.update(params[:crudapp])
+				params[:columns].each do |params_column|
+	        column = Column.find_or_create_by(id: params_column[:id])
+					@crudapp.columns << @column.update(params_column)
+				end
+				redirect "/crudapps/#{@crudapp.id}"
+			else
+				redirect "/crudapps"
 			end
-			redirect "/crudapps/#{@crudapp.id}"
 		else
 			redirect "/login"
 		end
@@ -117,6 +122,20 @@ class ApplicationController < Sinatra::Base
 	get '/crudapps/:id/zipdl' do
 		crudapp = Crudapp.find(params[:id])
 		send_file "assets/creations/#{crudapp.title}.zip"
+	end
+
+	delete '/crudapps/:id' do
+		if logged_in?
+			crudapp = Crudapp.find(params[:id])
+			if current_user.id == crudapp.user_id
+				crudapp.destroy
+				redirect "/crudapps"
+			else
+				redirect "/crudapps/#{crudapp.id}"
+			end
+		else
+			redirect "/login"
+		end
 	end
 
 

@@ -10,6 +10,13 @@
   <header id="header-text">
 		<div id="wheels"><p>WHEELS</p></div>
 		<div id="within-wheels"><p>WITHIN WHEELS</p></div>
+		<div id="welcome">
+			<% if logged_in? %>
+			  welcome, <%= current_user.username %>&nbsp;|&nbsp;<a href="/logout">log out</a>
+		  <% else %>
+		    <a href="/login">log in</a>
+		  <% end %>
+		</div>
   </header>
   <div id="main-text">
 		<%= yield %>
