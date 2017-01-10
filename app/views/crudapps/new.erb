@@ -1,9 +1,9 @@
 <div>Let's make a CRUD app.</div>
 <form method="post" action="/crudapps">
-  <ul>
+  <ul class="basic-form">
     <li>
       <label for="crudapp[title]">Application title</label>
-      <input type="text" name="crudapp[title]">
+      <input class="fieldbox" type="text" name="crudapp[title]">
     </li>
     <li>
       <label for="crudapp[description]">Description</label>
@@ -11,31 +11,31 @@
     </li>
     <li>
       <label for="crudapp[model]">Item name</label>
-      <input type="text" name="crudapp[model]" placeholder="Book? Song? Blog post?">
+      <input class="fieldbox" type="text" name="crudapp[model]" placeholder="Book? Song? Blog post?">
     </li>
     <li>
       <label for="columns[][key_name]">First attribute name</label>
-      <input type="text" name="columns[][key_name]">
+      <input class="fieldbox" type="text" name="columns[][key_name]">
     </li>
     <li>
       <label for="columns[][data_type]">First attribute data type</label>
-      <input type="text" name="columns[][data_type]">
+      <input class="fieldbox" type="text" name="columns[][data_type]">
     </li>
     <li>
       <label for="columns[][key_name]">Second attribute name</label>
-      <input type="text" name="columns[][key_name]">
+      <input class="fieldbox" type="text" name="columns[][key_name]">
     </li>
     <li>
       <label for="columns[][data_type]">Second attribute data type</label>
-      <input type="text" name="columns[][data_type]">
+      <input class="fieldbox" type="text" name="columns[][data_type]">
     </li>
     <li>
       <label for="columns[][key_name]">Third attribute name</label>
-      <input type="text" name="columns[][key_name]">
+      <input class="fieldbox" type="text" name="columns[][key_name]">
     </li>
     <li>
       <label for="columns[][data_type]">Third attribute data type</label>
-      <input type="text" name="columns[][data_type]">
+      <input class="fieldbox" type="text" name="columns[][data_type]">
     </li>
   </ul>
   <input type="submit" value="Submit">

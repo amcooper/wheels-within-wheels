@@ -1,13 +1,24 @@
-<div>Sign up</div>
+<div class="entry-header">
+  <div class="entry-header-text">
+    <span><span class="entry-alternative"><a href="/login">log in</a></span> or sign up</span><span class="fa fa-angle-double-down signup-pointer"></span>
+  </div>
+</div>
 <form method="post" action="/signup">
-  <label for="username">Username: </label>
-  <input type="text" name="username">
-  <br><br>
-  <label for="email">Email: </label>
-  <input type="email" name="email">
-  <br><br>
-  <label for="password">Password: </label>
-  <input type="password" name="password">
-  <br><br>
-  <input type="submit" value="signup.">
+  <ul class="basic-form">
+    <li>
+      <label for="username">username: </label>
+      <input class="fieldbox" type="text" name="username">
+    </li>
+    <li>
+      <label for="email">email: </label>
+      <input class="fieldbox" type="email" name="email">
+    </li>
+    <li>
+      <label for="password">password: </label>
+      <input class="fieldbox" type="password" name="password">
+    </li>
+  </ul>
+  <div class="entry-submit-margin">
+      <input class="entry-submit" type="submit" value="submit">
+  </div>
 </form>

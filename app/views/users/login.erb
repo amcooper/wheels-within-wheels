@@ -1,8 +1,21 @@
-<div>Log in or <a href="/signup">sign up</a></div>
+<div class="entry-header">
+	<div class="entry-header-text">
+		<span class="fa fa-angle-double-down login-pointer"></span><span>log in or <span class="entry-alternative"><a href="/signup">sign up</a></span></span>
+	</div>
+	<!-- <div class="entry-header-pointer"></div> -->
+</div>
 <form method="post" action="/login">
-  <label for="username">Username: </label>
-  <input type="text" id="username" name="username">
-  <label for="password">Password: </label>
-  <input type="password" id="password" name="password">
-  <input type="submit" value="submit">
+	<ul class="basic-form">
+		<li>
+		  <label for="username">username: </label>
+		  <input class="fieldbox" type="text" id="username" name="username">
+	  </li>
+	  <li>
+		  <label for="password">password: </label>
+		  <input class="fieldbox" type="password" id="password" name="password">
+	  </li>
+	</ul>
+	<div class="entry-submit-margin">
+	  <input class="entry-submit" type="submit" value="submit">
+  </div>
 </form>
