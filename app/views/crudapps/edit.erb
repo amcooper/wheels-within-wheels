@@ -1,6 +1,5 @@
 <div class="entry-header">edit an app</div>
 <form method="post" action="/crudapps/<%= @crudapp.id %>">
-  <input type="hidden" name="_method" value="patch">
   <input type="hidden" name="crudapp[user_id]" value="<%= @crudapp.user_id %>">
 
   <ul class="basic-form">
@@ -24,8 +23,8 @@
       <input class="fieldbox" type="text" name="columns[0][key_name]" value="<%= @crudapp.columns[0].key_name %>">
     </li>
     <li>
-      <label for="columns[][data_type]">First attribute data type</label>
-      <select name="columns[][data_type]">
+      <label for="columns[0][data_type]">First attribute data type</label>
+      <select name="columns[0][data_type]">
         <option value="String" <%= 'selected' if @crudapp.columns[0].data_type=='String' %>>String</option> 
         <option value="Number" <%= 'selected' if @crudapp.columns[0].data_type=='Number' %>>Number</option>
         <option value="Date" <%= 'selected' if @crudapp.columns[0].data_type=='Date' %>>Date</option>
@@ -40,8 +39,8 @@
       <input class="fieldbox" type="text" name="columns[1][key_name]" value="<%= @crudapp.columns[1].key_name %>">
     </li>
     <li>
-      <label for="columns[][data_type]">Second attribute data type</label>
-      <select name="columns[][data_type]">
+      <label for="columns[1][data_type]">Second attribute data type</label>
+      <select name="columns[1][data_type]">
         <option value="String" <%= 'selected' if @crudapp.columns[1].data_type=='String' %>>String</option> 
         <option value="Number" <%= 'selected' if @crudapp.columns[1].data_type=='Number' %>>Number</option>
         <option value="Date" <%= 'selected' if @crudapp.columns[1].data_type=='Date' %>>Date</option>
@@ -56,8 +55,8 @@
       <input class="fieldbox" type="text" name="columns[][key_name]" value="<%= @crudapp.columns[2].key_name %>">
     </li>
     <li>
-      <label for="columns[][data_type]">Third attribute data type</label>
-      <select name="columns[][data_type]">
+      <label for="columns[2][data_type]">Third attribute data type</label>
+      <select name="columns[2][data_type]">
         <option value="String" <%= 'selected' if @crudapp.columns[2].data_type=='String' %>>String</option> 
         <option value="Number" <%= 'selected' if @crudapp.columns[2].data_type=='Number' %>>Number</option>
         <option value="Date" <%= 'selected' if @crudapp.columns[2].data_type=='Date' %>>Date</option>

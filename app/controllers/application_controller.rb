@@ -1,4 +1,5 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -9,6 +10,8 @@ class ApplicationController < Sinatra::Base
   	set :session_secret, 'riserobotsrise'
   end
 
+  use Rack::Flash
+
   helpers Helpers, FindAndReplace
 
 	get '/' do
@@ -17,6 +20,7 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
   	if logged_in?
+  		flash[:message] = "already logged in"
   		redirect '/crudapps'
   	else
   	  erb :'users/login'
@@ -29,6 +33,11 @@ class ApplicationController < Sinatra::Base
   		session[:user_id] = @user.id
   		redirect '/crudapps'
   	else
+  		if !@user
+  			flash[:message] = "unknown username"
+  		else
+  			flash[:message] = "incorrect password"
+  		end
   		redirect '/login'
   	end
   end
@@ -36,12 +45,15 @@ class ApplicationController < Sinatra::Base
   get '/logout' do
   	if logged_in?
   		session.clear
+  	else
+  		flash[:message] = "already logged out"	
   	end
 		redirect '/login'
   end
 
   get '/signup' do
   	if logged_in?
+  		flash[:message] = "already logged in"
   		redirect '/crudapps'
   	else
 	  	erb :'users/signup'
@@ -52,9 +64,14 @@ class ApplicationController < Sinatra::Base
   	# if params[:username] == "" || params[:email] == "" || params[:password] == ""
   	# 	redirect '/signup'
   	# else
-	  	@user = User.create(params)
-	  	session[:user_id] = @user.id
-	  	redirect '/crudapps'
+	  	@user = User.new(params)
+	  	if @user.save
+		  	session[:user_id] = @user.id
+		  	redirect '/crudapps'
+		  else
+		  	flash[:message] = @user.errors.full_messages.join(" | ")
+		  	redirect '/signup'
+		  end
 	  # end
   end
 
@@ -67,6 +84,7 @@ class ApplicationController < Sinatra::Base
 		if logged_in?
 			erb :'crudapps/new'
 		else
+  		flash[:message] = "please log in to create an app"
 			redirect '/login'
 		end
 	end
@@ -83,6 +101,7 @@ class ApplicationController < Sinatra::Base
 			@crudapp.zipper
 			redirect "/crudapps/#{@crudapp.id}"
 		else
+  		flash[:message] = "please log in to create an app"
 			redirect "/login"
 		end
 	end
@@ -97,6 +116,7 @@ class ApplicationController < Sinatra::Base
 			@crudapp = Crudapp.find(params[:id])
 			erb :'crudapps/edit'
 		else
+  		flash[:message] = "please log in to edit an app"
 			redirect "/login"
 		end
 	end
@@ -104,20 +124,27 @@ class ApplicationController < Sinatra::Base
 	#patch - Not working. Hm.
 	post "/crudapps/:id" do
 	# patch "/crudapps/:id" do
-		binding.pry
+		# binding.pry
 		if logged_in?
+			binding.pry
 			@crudapp = Crudapp.find(params[:id])
 			if current_user.id == @crudapp.user_id
-				@crudapp.update(params[:crudapp])
-				params[:columns].each do |params_column|
-	        column = Column.find_or_create_by(id: params_column[:id])
-					@crudapp.columns << @column.update(params_column)
+				if !params[:crudapp]
+					flash[:message] = "edit functionality is down!"
+				else
+					@crudapp.update(params[:crudapp])
+					params[:columns].each do |params_column|
+		        column = Column.find_or_create_by(id: params_column[:id])
+						@crudapp.columns << @column.update(params_column)
+					end
 				end
 				redirect "/crudapps/#{@crudapp.id}"
 			else
+	  		flash[:message] = "you must be the app's creator to edit"
 				redirect "/crudapps"
 			end
 		else
+  		flash[:message] = "please log in to edit an app"
 			redirect "/login"
 		end
 	end
@@ -137,9 +164,11 @@ class ApplicationController < Sinatra::Base
 				crudapp.destroy
 				redirect "/crudapps"
 			else
+	  		flash[:message] = "you must be the app's creator to delete"
 				redirect "/crudapps/#{crudapp.id}"
 			end
 		else
+  		flash[:message] = "please log in to delete an app"
 			redirect "/login"
 		end
 	end

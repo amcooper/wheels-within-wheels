@@ -1,3 +1,8 @@
+<div class="flash">
+  <% if flash[:message] %>
+    <%= flash[:message] %>
+  <% end %>
+</div>
 <div class="entry-header">
 	<div class="entry-header-text">
 		<span class="fa fa-angle-double-down login-pointer"></span><span>log in or <span class="entry-alternative"><a href="/signup">sign up</a></span></span>

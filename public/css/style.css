@@ -64,16 +64,29 @@ a:visited {
   font-size: 1.8rem;
 }
 
-#main-text {
-	position: static;
-	margin: 100px auto 0 auto;
-	min-width: 200px;
-	width: 40%;
-	font-family: 'Walter Turncoat';
-	font-size: 24px;
-	font-size: 2.4rem;
+#main-text-container {
+	top: 90px;
+	position: fixed;
+	width: 100%;
 }
- 
+
+#main-text {
+  overflow-y: scroll;
+  max-height: 570px;
+  margin: 0 auto;
+  min-width: 200px;
+  width: 40%;
+  font-family: 'Walter Turncoat';
+  font-size: 24px;
+  font-size: 2.4rem;
+}
+
+.flash {
+	color: #ffeaf3;
+	font-size: 18px;
+	font-size: 1.8rem;
+}
+
 .entry-header {
 	font-size: 48px;
 	font-size: 4.8rem;

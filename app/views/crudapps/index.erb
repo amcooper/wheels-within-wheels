@@ -1,3 +1,8 @@
+<div class="flash">
+  <% if flash[:message] %>
+    <%= flash[:message] %>
+  <% end %>
+</div>
 <div class="crudapp-header">here are the apps</div>
 <div id="create-link">
 	<a href="/crudapps/new">create a new app</a>

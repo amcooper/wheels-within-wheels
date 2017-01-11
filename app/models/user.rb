@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 
-  validates :username, :email, :password, presence: true
-  validates :username, :email, uniqueness: true
-  
+  validates :username, :email, :password, presence: {message: "all fields are required"}
+  validates :username, :email, uniqueness: {message: "username and/or email already taken"}
+
   include Slugify::Slugger
   extend Slugify::Slugfinder
 
