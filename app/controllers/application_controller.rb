@@ -91,6 +91,7 @@ class ApplicationController < Sinatra::Base
 
 	post '/crudapps' do
 		if logged_in?
+			binding.pry
 			@crudapp = Crudapp.new(params[:crudapp])
 			@crudapp.user_id = current_user.id
 			@crudapp.save
