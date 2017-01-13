@@ -189,13 +189,15 @@ class Crudapp < ActiveRecord::Base
 	    findString: "nodeWheels",
 	    replacement: { 
 	    	isArray: false, 
-	    	first_attr: "title" } 
+	    	first_attr: "title" 
+	    } 
   	},
     { file: ["package.json"],
 	    findString: "nodeWheels",
 	    replacement: { 
 	    	isArray: false, 
-	    	first_attr: "title" } 
+	    	first_attr: "title" 
+	    } 
   	},
 	  { file: ["public", "package.json"],
 	  	findString: "nodeWheels",

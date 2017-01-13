@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
 
   use Rack::Flash
 
-  helpers Helpers, FindAndReplace
+  helpers Helpers
 
 	get '/' do
 		redirect '/login'
@@ -91,7 +91,7 @@ class ApplicationController < Sinatra::Base
 
 	post '/crudapps' do
 		if logged_in?
-			binding.pry
+			# binding.pry
 			@crudapp = Crudapp.new(params[:crudapp])
 			@crudapp.user_id = current_user.id
 			@crudapp.save
@@ -122,12 +122,9 @@ class ApplicationController < Sinatra::Base
 		end
 	end
 
-	#patch - Not working. Hm.
 	post "/crudapps/:id" do
 	# patch "/crudapps/:id" do
-		# binding.pry
 		if logged_in?
-			binding.pry
 			@crudapp = Crudapp.find(params[:id])
 			if current_user.id == @crudapp.user_id
 				if !params[:crudapp]
@@ -135,9 +132,10 @@ class ApplicationController < Sinatra::Base
 				else
 					@crudapp.update(params[:crudapp])
 					params[:columns].each do |params_column|
-		        column = Column.find_or_create_by(id: params_column[:id])
-						@crudapp.columns << @column.update(params_column)
+		        column = Column.find_or_create_by(id: params_column[1][:id].to_i)
+						column.update(params_column[1])
 					end
+					@crudapp.zipper
 				end
 				redirect "/crudapps/#{@crudapp.id}"
 			else
