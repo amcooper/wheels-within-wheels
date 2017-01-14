@@ -225,18 +225,20 @@ class Crudapp < ActiveRecord::Base
 	def zipper
 	  titleslug = self.slugmaker(:title)
 		FileUtils.cd('assets/creations') do
-		  # binding.pry 
 			FileUtils.mkdir titleslug
 
-			# We need to exclude `node_modules [2x]` and `bower_components` from the copy. Either that or leave them out of wh-wi-wh in the first place.
 			FileUtils.cp_r '../raw_material/.', titleslug
 
       SUBSTITUTIONS.each do |substitution|
       	replacementHash = substitution[:replacement]
       	replacement = replacementHash[:isArray] ? (self.send(replacementHash[:first_attr])[replacementHash[:index]]).send(replacementHash[:second_attr]) : self.send(replacementHash[:first_attr])
-      	# binding.pry
 				file_edit(File.join(titleslug, substitution[:file]), substitution[:findString], replacement)
 			end
+
+      if File.exist? "#{titleslug}.zip"
+
+      	FileUtils.mv "#{titleslug}.zip", "#{titleslug}.zip.bak"
+      end
 
 			Zip::Archive.open("#{titleslug}.zip", Zip::CREATE) do |archive|
 				archive.add_dir(titleslug)
@@ -249,8 +251,8 @@ class Crudapp < ActiveRecord::Base
 				end
 			end
 
-			# After zipping, should it zap the original?
 			FileUtils.remove_entry_secure(titleslug)
+			FileUtils.remove_entry_secure("#{titleslug}.zip.bak")
 		end
 
 		File.join('assets','creations',"#{titleslug}.zip")
