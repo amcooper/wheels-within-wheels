@@ -10,6 +10,7 @@ gem 'require_all'
 gem 'bcrypt'
 gem 'zipruby'
 gem 'rack-flash3'
+gem 'maruku'
 
 group :development do
 	gem 'thin'

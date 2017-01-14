@@ -18,6 +18,10 @@ class ApplicationController < Sinatra::Base
 		redirect '/login'
 	end
 
+	get '/about' do
+		markdown :about, :layout_engine => :erb
+	end
+
   get '/login' do
   	if logged_in?
   		flash[:message] = "already logged in"

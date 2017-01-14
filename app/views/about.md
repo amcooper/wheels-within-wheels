@@ -7,26 +7,26 @@ You may never need to build another CRUD app!
 
 Rubyists (or anyone) can use this as a tool to learn about the MEAN-stack. You can inspect the code with the application's design&mdash;*your* design&mdash;in mind.
 
-## Visit on the Web
-(The public URL will be posted by the end of January 2017.)
-
-## Run it locally
-Want to run it locally? No problem.
-
-1. Ruby is required. It comes standard on Mac and Linux. If you're on Windows, check out [RubyInstaller](https://rubyinstaller.org/).
-2. Clone this repository.
-3. `gem install bundler` to install the Bundler gem (if you don't already have it) and then, from the root of the new directory, `bundle install`.
-4. Run `shotgun` to launch the app!
-5. Go to the browser and navigate to localhost:9393
-6. And you're up and running!
-
 ## Web app operation, or the 'outer wheel'
 Wheels Within Wheels creates a basic, single-model CRUD application with three attributes. To do so, it asks the user for the following specifications:
 * Application title
 * Application description
-* Model name (e.g., book)
-* Three pairs of attributes and data types (e.g., title, String; author, String; finished, Boolean). At this time, the valid data types are String, Number, Date, and Boolean.
-Click 'submit' and you'll be presented with a link to download the completed basic MEAN-stack application made to your specifications. 
+* Model name
+* Three pairs of attributes and data types. At this time, the valid data types are String, Number, Date, and Boolean.
+Click 'submit' and you'll be presented with a link to download the completed basic MEAN-stack application made to your specifications.
+
+For example, let's say you're making an app for tracking Supreme Court decisions. You could proceed as follows:
+<table>
+	<tr><td>Title</td><td>Benchley</td></tr>
+	<tr><td>Description</td><td>A pile of SCOTUS decisions </td></tr>
+	<tr><td>Model name </td><td>Case </td></tr>
+	<tr><td>Attribute 1</td><td>Name </td></tr>
+	<tr><td>Data Type 1</td><td>String </td></tr>
+	<tr><td>Attribute 2</td><td>Description </td></tr>
+	<tr><td>Data Type 2</td><td>String </td></tr>
+	<tr><td>Attribute 3</td><td>Decision </td></tr>
+	<tr><td>Data Type 3</td><td>String </td></tr>
+</table>
 
 ## Custom app operation, or the 'inner wheel'
 Download and unzip your new app. To run it locally, you need to get MEAN (MongoDB, ExpressJS, AngularJS, Node.js).

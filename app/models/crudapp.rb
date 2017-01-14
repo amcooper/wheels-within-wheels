@@ -13,6 +13,13 @@ class Crudapp < ActiveRecord::Base
 	belongs_to :user
 
 	SUBSTITUTIONS = [
+	  { file: ["README.md"],
+	  	findString: "appname",
+	  	replacement: { 
+	  		isArray: false, 
+	  		first_attr: "title"
+		  }
+	  },
 	  { file: ["app","models","item.js"],
 	  	findString: "attr0",
 	  	replacement: { 
@@ -236,7 +243,6 @@ class Crudapp < ActiveRecord::Base
 			end
 
       if File.exist? "#{titleslug}.zip"
-
       	FileUtils.mv "#{titleslug}.zip", "#{titleslug}.zip.bak"
       end
 
