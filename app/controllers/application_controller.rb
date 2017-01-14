@@ -61,18 +61,14 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-  	# if params[:username] == "" || params[:email] == "" || params[:password] == ""
-  	# 	redirect '/signup'
-  	# else
-	  	@user = User.new(params)
-	  	if @user.save
-		  	session[:user_id] = @user.id
-		  	redirect '/crudapps'
-		  else
-		  	flash[:message] = @user.errors.full_messages.join(" | ")
-		  	redirect '/signup'
-		  end
-	  # end
+  	@user = User.new(params)
+  	if @user.save
+	  	session[:user_id] = @user.id
+	  	redirect '/crudapps'
+	  else
+	  	flash[:message] = @user.errors.full_messages.join(" | ")
+	  	redirect '/signup'
+	  end
   end
 
 	get '/crudapps' do
@@ -91,7 +87,6 @@ class ApplicationController < Sinatra::Base
 
 	post '/crudapps' do
 		if logged_in?
-			# binding.pry
 			@crudapp = Crudapp.new(params[:crudapp])
 			@crudapp.user_id = current_user.id
 			@crudapp.save
@@ -123,7 +118,6 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/crudapps/:id" do
-	# patch "/crudapps/:id" do
 		if logged_in?
 			@crudapp = Crudapp.find(params[:id])
 			if current_user.id == @crudapp.user_id
@@ -160,6 +154,7 @@ class ApplicationController < Sinatra::Base
 				FileUtils.cd('assets/creations') do
 					FileUtils.remove_entry_secure("#{slug(crudapp.title)}.zip")
 				end
+				crudapp.columns.each {|column| column.destroy }
 				crudapp.destroy
 				redirect "/crudapps"
 			else
