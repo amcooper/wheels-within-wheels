@@ -8,7 +8,7 @@ You may never need to build another CRUD app!
 Rubyists (or anyone) can use this as a tool to learn about the MEAN-stack. You can inspect the code with the application's design&mdash;*your* design&mdash;in mind.
 
 ## Visit on the Web
-(The public URL will be posted by the end of January 2017.)
+https://wheels-within-wheels.herokuapp.com/login
 
 ## Run it locally
 Want to run it locally? No problem.
