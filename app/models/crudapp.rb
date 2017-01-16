@@ -258,7 +258,9 @@ class Crudapp < ActiveRecord::Base
 			end
 
 			FileUtils.remove_entry_secure(titleslug)
-			FileUtils.remove_entry_secure("#{titleslug}.zip.bak")
+			if File.exist? "#{titleslug}.zip.bak"
+				FileUtils.remove_entry_secure("#{titleslug}.zip.bak") 
+			end
 		end
 
 		File.join('assets','creations',"#{titleslug}.zip")
