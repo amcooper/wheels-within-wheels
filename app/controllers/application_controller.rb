@@ -125,16 +125,16 @@ class ApplicationController < Sinatra::Base
 		if logged_in?
 			@crudapp = Crudapp.find(params[:id])
 			if current_user.id == @crudapp.user_id
-				if !params[:crudapp]
-					flash[:message] = "edit functionality is down!"
-				else
-					@crudapp.update(params[:crudapp])
+				# if !params[:crudapp]
+				# 	flash[:message] = "edit functionality is down!"
+				# else
+					binding.pry; @crudapp.update(params[:crudapp])
 					params[:columns].each do |params_column|
 		        column = Column.find_or_create_by(id: params_column[1][:id].to_i)
 						column.update(params_column[1])
 					end
 					@crudapp.zipper
-				end
+				# end
 				redirect "/crudapps/#{@crudapp.id}"
 			else
 	  		flash[:message] = "you must be the app's creator to edit"
