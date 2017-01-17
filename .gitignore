@@ -1,5 +1,5 @@
 .DS_Store
 notes/
-assets/creations/
+assets/creations/*.zip
 public/font-awesome-*/
 edit_old.erb
