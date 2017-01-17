@@ -1,0 +1,23 @@
+angular.module('nodeWheels',['ui.router','ngResource','nodeWheels.controllers','nodeWheels.services']);
+
+angular.module('nodeWheels').config(function($stateProvider,$httpProvider){
+    $stateProvider.state('items',{
+        url:'/items',
+        templateUrl:'partials/items.html',
+        controller:'ItemListController'
+    }).state('viewItem',{
+       url:'/items/:id/view',
+       templateUrl:'partials/item-view.html',
+       controller:'ItemViewController'
+    }).state('newItem',{
+        url:'/items/new',
+        templateUrl:'partials/item-add.html',
+        controller:'ItemCreateController'
+    }).state('editItem',{
+        url:'/items/:id/edit',
+        templateUrl:'partials/item-edit.html',
+        controller:'ItemEditController'
+    });
+}).run(function($state){
+   $state.go('items');
+});

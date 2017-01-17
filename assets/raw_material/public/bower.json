@@ -1,0 +1,18 @@
+{
+  "name": "node-wheels",
+  "homepage": "https://github.com/amcooper/node-wheels",
+  "authors": [
+    "Adam Cooper <amcooper@gmail.com>"
+  ],
+  "description": "Single model CRUD app and part of Wheels Within Wheels",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
