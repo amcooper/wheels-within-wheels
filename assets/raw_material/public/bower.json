@@ -6,6 +6,13 @@
   ],
   "description": "Single model CRUD app and part of Wheels Within Wheels",
   "main": "",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-resource": "^1.6.1",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "font-awesome": "^4.7.0"
+  },
   "license": "MIT",
   "private": true,
   "ignore": [

@@ -27,10 +27,9 @@ module.exports = function (app) {
             if (err) {
                 res.send(err);
             } else {
-                item.title = req.body.title; // SUBTHIS and below
-                item.attr01 = req.body.attr01;
-                item.attr02 = req.body.attr02;
-                item.attr03 = req.body.attr03;
+                item.attr0 = req.body.attr0;
+                item.attr1 = req.body.attr1;
+                item.attr2 = req.body.attr2;
                 item.save().then(function(item) {
                     res.json(item);
                 });
@@ -40,10 +39,9 @@ module.exports = function (app) {
 
     app.post('/api/items', function (req, res) {
         Item.create({
-            title: req.body.title, // SUBTHIS and below
-            attr01: req.body.attr01,
-            attr02: req.body.attr02,
-            attr03: req.body.attr03,
+            attr0: req.body.attr0,
+            attr1: req.body.attr1,
+            attr2: req.body.attr2,
             done: false
         }, function (err, item) {
             if (err)

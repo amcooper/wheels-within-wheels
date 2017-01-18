@@ -1,5 +1,5 @@
 {
-  "name": "node-wheels",
+  "name": "nodeWheels",
   "version": "0.0.1",
   "description": "Simple one-model CRUD application.",
   "main": "server.js",
@@ -15,13 +15,5 @@
     "start": "node server.js"
   },
   "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/amcooper/node-wheels.git"
-  },
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/amcooper/node-wheels/issues"
-  },
-  "homepage": "https://github.com/amcooper/node-wheels#readme"
+  "license": "ISC"
 }

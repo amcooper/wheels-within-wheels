@@ -1,11 +1,11 @@
-<a ui-sref="newItem" class="btn-primary btn-lg nodecoration">Add New Item</a>
+<a ui-sref="newItem" class="btn-primary btn-lg nodecoration">Add New ItemItem</a>
 <table class="table itemtable">
     <tr>
-        <td><h3>All Items</h3></td>
+        <td><h3>All ItemItems</h3></td>
         <td></td>
     </tr>
     <tr ng-repeat="item in items">
-        <td>{{item.title}}</td>
+        <td>{{item.attr0}}</td>
         <td>
             <a class="btn btn-primary" ui-sref="viewItem({id:item._id})">View</a>
             <a class="btn btn-danger"  ng-click="deleteItem(item)">Delete</a>
