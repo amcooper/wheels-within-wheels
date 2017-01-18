@@ -10,6 +10,10 @@ class ApplicationController < Sinatra::Base
   	set :session_secret, 'riserobotsrise'
   end
 
+  after do
+  	ActiveRecord::Base.connection.close
+  end
+
   use Rack::Flash
 
   helpers Helpers
@@ -156,7 +160,9 @@ class ApplicationController < Sinatra::Base
 			crudapp = Crudapp.find(params[:id])
 			if current_user.id == crudapp.user_id
 				FileUtils.cd('assets/creations') do
-					FileUtils.remove_entry_secure("#{slug(crudapp.title)}.zip")
+					if File.exist? "#{slug(crudapp.title)}.zip"
+						FileUtils.remove_entry_secure("#{slug(crudapp.title)}.zip")
+					end
 				end
 				crudapp.columns.each {|column| column.destroy }
 				crudapp.destroy
