@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
   end
 
   after do
-  	ActiveRecord::Base.connection.close
+		ActiveRecord::Base.connection.close
   end
 
   use Rack::Flash
