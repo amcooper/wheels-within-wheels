@@ -10,6 +10,10 @@ class ApplicationController < Sinatra::Base
   	set :session_secret, 'riserobotsrise'
   end
 
+  after do
+	ActiveRecord::Base.connection.close
+  end
+
   use Rack::Flash
 
   helpers Helpers
