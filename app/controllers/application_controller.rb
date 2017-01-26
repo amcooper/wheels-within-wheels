@@ -69,14 +69,19 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
-  	@user = User.new(params)
-  	if @user.save
-	  	session[:user_id] = @user.id
-	  	redirect '/crudapps'
-	  else
-	  	flash[:message] = @user.errors.full_messages.join(" | ")
-	  	redirect '/signup'
-	  end
+  	if !logged_in?
+	  	@user = User.new(params)
+	  	if @user.save
+		  	session[:user_id] = @user.id
+		  	redirect '/crudapps'
+		  else
+		  	flash[:message] = @user.errors.full_messages.join(" | ")
+		  	redirect '/signup'
+		  end
+	 	else 
+	 		flash[:message] = "already logged in"
+	 		redirect '/crudapps'
+	 	end
   end
 
 	get '/crudapps' do
@@ -95,8 +100,7 @@ class ApplicationController < Sinatra::Base
 
 	post '/crudapps' do
 		if logged_in?
-			@crudapp = Crudapp.new(params[:crudapp])
-			@crudapp.user_id = current_user.id
+			@crudapp = current_user.crudapps.build(params[:crudapp])
 			@crudapp.save
 			params[:columns].each do |column|
 				column[:key_name] = slug(column[:key_name])
