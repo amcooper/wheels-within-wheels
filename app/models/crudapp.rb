@@ -234,7 +234,7 @@ class Crudapp < ActiveRecord::Base
 		FileUtils.cd('public/creations') do
 			FileUtils.mkdir titleslug
 
-			FileUtils.cp_r '../raw_material/.', titleslug
+			FileUtils.cp_r '../../assets/raw_material/.', titleslug
 
       SUBSTITUTIONS.each do |substitution|
       	replacementHash = substitution[:replacement]

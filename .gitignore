@@ -5,3 +5,4 @@ pids/
 unicorn.rb
 spec.md
 public/creations/*.zip
+db/development.sqlite
