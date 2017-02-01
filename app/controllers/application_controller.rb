@@ -155,15 +155,18 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get '/crudapps/:id/zipdl' do
+		puts "Entering route"
 		crudapp = Crudapp.find(params[:id])
-		send_file "assets/creations/#{crudapp.title}.zip"
+		puts "Successful find with id: #{crudapp.id}"
+		puts "Preparing to send_file"
+		send_file "public/creations/#{crudapp.title}.zip"
 	end
 
 	delete '/crudapps/:id' do
 		if logged_in?
 			crudapp = Crudapp.find(params[:id])
 			if current_user.id == crudapp.user_id
-				FileUtils.cd('assets/creations') do
+				FileUtils.cd('public/creations') do
 					if File.exist? "#{slug(crudapp.title)}.zip"
 						FileUtils.remove_entry_secure("#{slug(crudapp.title)}.zip")
 					end

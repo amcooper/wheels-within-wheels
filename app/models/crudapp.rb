@@ -231,7 +231,7 @@ class Crudapp < ActiveRecord::Base
 
 	def zipper
 	  titleslug = self.slugmaker(:title)
-		FileUtils.cd('assets/creations') do
+		FileUtils.cd('public/creations') do
 			FileUtils.mkdir titleslug
 
 			FileUtils.cp_r '../raw_material/.', titleslug
@@ -263,7 +263,7 @@ class Crudapp < ActiveRecord::Base
 			end
 		end
 
-		File.join('assets','creations',"#{titleslug}.zip")
+		File.join('public','creations',"#{titleslug}.zip")
 	end
 
 end
