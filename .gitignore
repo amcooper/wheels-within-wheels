@@ -1,3 +1,6 @@
 .DS_Store
 notes/
+logs/
+pids/
+unicorn.rb
 public/creations/*.zip
