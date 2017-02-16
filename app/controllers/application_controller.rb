@@ -158,7 +158,7 @@ class ApplicationController < Sinatra::Base
 		puts "Entering route"
 		crudapp = Crudapp.find(params[:id])
 		puts "Successful find with id: #{crudapp.id}"
-		puts "Preparing to send_file: #{slug(crudapp.title)}.zip"
+		puts "Preparing to send_file #{slug(crudapp.title)}.zip"
 		send_file "public/creations/#{slug(crudapp.title)}.zip"
 	end
 
