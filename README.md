@@ -1,5 +1,5 @@
 # Wheels Within Wheels
-It's not unusual to require a web appliation with CRUD functionality. Code, code, code. What if I told you there's an app&mdash;a CRUD app, in fact&mdash;that builds a CRUD app for you? 
+It's not unusual to require a web application with CRUD functionality. Code, code, code. What if I told you there's an app&mdash;a CRUD app, in fact&mdash;that builds a CRUD app for you? 
 
 Wheels Within Wheels is the robot you've been waiting for. Built in Sinatra, Wheels Within Wheels accepts some basic specifications from the user, creates a MEAN-stack CRUD app with those specs, wraps it up in a Zip file and presents a link for download.
 
@@ -8,7 +8,7 @@ You may never need to build another CRUD app!
 Rubyists (or anyone) can use this as a tool to learn about the MEAN-stack. You can inspect the code with the application's design&mdash;*your* design&mdash;in mind.
 
 ## Visit on the Web
-https://wheels-within-wheels.herokuapp.com/login
+http://theadamcooper.com:2005
 
 ## Run it locally
 Want to run it locally? No problem.
