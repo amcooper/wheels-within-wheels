@@ -38,6 +38,9 @@ Download and unzip your new app. To run it locally, you need to get MEAN (MongoD
 * Run `node server.js`. 
 * Open a browser and visit localhost:8080. Your MEAN-stack app will be running there!
 
+## Known issues
+The application does not handle a model with less than three attributes. I've added a check that prohibits creation of an app with zero attributes; a flash message is displayed to the user. Still need to figure out the substitution mechanism for one- or two-attribute apps.
+
 ## Contributions
 This application is not currently under active development. I can accept pull requests for bug fixes. If you envision improvements, feel free to fork and develop.
 
