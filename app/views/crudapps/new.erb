@@ -1,3 +1,8 @@
+<div class="flash">
+  <% if flash[:message] %>
+    <%= flash[:message] %>
+  <% end %>
+</div>
 <div class="entry-header">let's make a crud app.</div>
 <form method="post" action="/crudapps">
   <ul class="basic-form">

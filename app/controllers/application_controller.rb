@@ -77,7 +77,7 @@ class ApplicationController < Sinatra::Base
 		  else
 		  	flash[:message] = @user.errors.full_messages.join(" | ")
 		  	redirect '/signup'
-		  end
+      end
 	 	else 
 	 		flash[:message] = "already logged in"
 	 		redirect '/crudapps'
@@ -100,14 +100,19 @@ class ApplicationController < Sinatra::Base
 
 	post '/crudapps' do
 		if logged_in?
-			@crudapp = current_user.crudapps.build(params[:crudapp])
-			@crudapp.save
-			params[:columns].each do |column|
-				column[:key_name] = slug(column[:key_name])
-				@crudapp.columns << Column.create(column)
+			if params[:columns].map {|column| column[:key_name]}.join.empty?
+				flash[:message] = "please create at least one column"
+				redirect "crudapps/new"
+			else
+				@crudapp = current_user.crudapps.build(params[:crudapp])
+				params[:columns].each do |column|
+					column[:key_name] = slug(column[:key_name])
+					@crudapp.columns << Column.create(column)
+				end
+				@crudapp.save
+				@crudapp.zipper
+				redirect "/crudapps/#{@crudapp.id}"
 			end
-			@crudapp.zipper
-			redirect "/crudapps/#{@crudapp.id}"
 		else
   		flash[:message] = "please log in to create an app"
 			redirect "/login"
