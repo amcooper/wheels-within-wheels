@@ -100,8 +100,8 @@ class ApplicationController < Sinatra::Base
 
 	post '/crudapps' do
 		if logged_in?
-			if params[:columns].map {|column| column[:key_name]}.join.empty?
-				flash[:message] = "please create at least one column"
+			if params[:columns].any? { |column| column[:key_name].empty? }
+				flash[:message] = "please create all three columns (known issue)"
 				redirect "crudapps/new"
 			else
 				@crudapp = current_user.crudapps.build(params[:crudapp])
