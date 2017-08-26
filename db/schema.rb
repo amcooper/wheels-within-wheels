@@ -12,22 +12,19 @@
 
 ActiveRecord::Schema.define(version: 20170105185711) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "columns", force: :cascade do |t|
-    t.string  "key_name"
-    t.string  "data_type"
+    t.string "key_name"
+    t.string "data_type"
     t.integer "crudapp_id"
   end
 
   create_table "crudapps", force: :cascade do |t|
-    t.string  "title"
+    t.string "title"
     t.integer "user_id"
-    t.string  "description"
-    t.string  "model"
-    t.string  "github"
-    t.string  "web"
+    t.string "description"
+    t.string "model"
+    t.string "github"
+    t.string "web"
   end
 
   create_table "users", force: :cascade do |t|
