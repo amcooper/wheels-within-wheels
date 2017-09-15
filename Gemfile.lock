@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/bmabey/database_cleaner.git
-  revision: 40e084e9a903fdae186ad4196bb5b306498a5096
+  revision: f1e71657936ad177e19032b9b5efbda28543d0d0
   specs:
     database_cleaner (1.6.1)
 
@@ -18,8 +18,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
     bcrypt (3.1.11)
     bond (0.5.1)
@@ -39,10 +39,10 @@ GEM
     kgio (2.11.0)
     maruku (0.7.3)
     method_source (0.8.2)
-    mini_mime (0.1.3)
+    mini_mime (0.1.4)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
-    mustermann (1.0.0)
+    mustermann (1.0.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     pg (0.21.0)
@@ -50,7 +50,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    public_suffix (2.0.5)
+    public_suffix (3.0.0)
     rack (2.0.3)
     rack-flash3 (1.0.5)
       rack
@@ -58,7 +58,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    raindrops (0.18.0)
+    raindrops (0.19.0)
     rake (12.0.0)
     rb-readline (0.5.5)
     require_all (1.4.0)
