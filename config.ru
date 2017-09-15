@@ -5,4 +5,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+
+# Which environment are we in?
+puts "\n**********\nCurrent environment: #{ENV['APP_ENV']}\n***********\n"
+
 run ApplicationController
