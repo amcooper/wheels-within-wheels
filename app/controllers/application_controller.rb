@@ -160,10 +160,7 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get '/crudapps/:id/zipdl' do
-		puts "Entering route" # debug
 		crudapp = Crudapp.find(params[:id])
-		puts "Successful find with id: #{crudapp.id}" # debug
-		puts "Preparing to send_file #{slug(crudapp.title)}.zip" # debug
 		send_file "public/creations/#{slug(crudapp.title)}.zip"
 	end
 
